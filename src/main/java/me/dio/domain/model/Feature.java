@@ -1,22 +1,8 @@
 package me.dio.domain.model;
 
-public class Feature {
-    private String icon;
-    private String description;
+import jakarta.persistence.Entity;
 
-    public String getIcon() {
-        return icon;
-    }
+@Entity(name = "tb_feature")
+public class Feature extends BaseItem {
 
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

@@ -1,12 +1,31 @@
 package me.dio.domain.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.math.BigDecimal;
 
+@Entity(name = "tb_account")
 public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String number;
+
+    @Column(length = 4)
     private String agency;
+
+    // Precision números depois da virgula
+    // Scala quantidade de números inteiros
+    @Column(precision = 2, scale = 13)
     private BigDecimal balance;
+
+    @Column(precision = 2, scale = 13, name = "additional_limit")
     private BigDecimal limit;
 
     public Long getId() {

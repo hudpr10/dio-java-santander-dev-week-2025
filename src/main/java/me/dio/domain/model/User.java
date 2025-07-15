@@ -1,14 +1,36 @@
 package me.dio.domain.model;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+
 import java.util.List;
 
+@Entity(name = "tb_user")
 public class User {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
+    // o Cascade ALL propaga as alterações, então se o User for delatado, o Account também é deletado
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Card card;
+
+    // O fetch EAGER toda vez que o User é buscado no banco, ele também busca as Features
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Feature> features;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<News> news;
 
     public long getId() {
