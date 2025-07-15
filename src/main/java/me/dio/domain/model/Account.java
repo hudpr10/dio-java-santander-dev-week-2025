@@ -20,12 +20,13 @@ public class Account {
     @Column(length = 4)
     private String agency;
 
-    // Precision números depois da virgula
-    // Scala quantidade de números inteiros
-    @Column(precision = 2, scale = 13)
+    // 9.999.999.999.999,00
+    // Precision quantidade de números inteiros
+    // Scala números depois da virgula
+    @Column(precision = 13, scale = 2)
     private BigDecimal balance;
 
-    @Column(precision = 2, scale = 13, name = "additional_limit")
+    @Column(precision = 13, scale = 2, name = "additional_limit")
     private BigDecimal limit;
 
     public Long getId() {
