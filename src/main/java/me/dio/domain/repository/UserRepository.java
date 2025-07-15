@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
+    // O Spring implementa automaticamente com as palavras chaves (EXISTS BY ACCOUNT_NUMBER)
+    boolean existsByAccountNumber(String number);
 }
